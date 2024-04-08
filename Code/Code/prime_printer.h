@@ -4,11 +4,11 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
-# include < vector >
+# include <vector>
 using std :: vector ;
 
-void print() {
-  const int max_number_of_primes = 300;
+void print(int inp_no) {
+  const int max_number_of_primes = inp_no;
   const int rows = 50;
   const int coloumn = 4;
   const int ordmax = 30;
