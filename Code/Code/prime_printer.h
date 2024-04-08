@@ -6,61 +6,72 @@
 #include <iomanip>
 
 void print() {
-  int M = 300;
-  int RR = 50;
-  int CC = 4;
-  int ORDMAX = 30;
-  int P[M+1];
-  int PAGENUMBER;
-  int PAGEOFFSET;
-  int ROWOFFSET;
+  int max_number_of_primes = 300;
+  int rows = 50;
+  int coloumn = 4;
+  int ordmax = 30;
+  int no_of_primes[max_number_of_primes+1];
+  int pagenumber;
+  int pageoffset;
+  int rowoffset;
   int C;
   int J;
   int K;
-  bool JPRIME;
-  int ORD;
+  bool jprime;
+  int ord;
   int SQUARE;
   int N=0;
-  int MULT[ORDMAX+1];
+  int MULT[ordmax+1];
 
   J=1;
   K=1;
-  P[1] = 2;
-  ORD = 2;
+  no_of_primes[1] = 2;
+  ord = 2;
   SQUARE = 9;
 
-  while (K < M) {
-  do {
-  J += 2;
-  if (J == SQUARE) {
-  ORD++;  SQUARE=P[ORD]*P[ORD];   MULT[ORD-1]=J;
+  while (K < max_number_of_primes) {
+    do {
+        J += 2;
+        if (J == SQUARE) {
+          ord++;  
+          SQUARE=no_of_primes[ord]*no_of_primes[ord];   
+          MULT[ord-1]=J;
+        }
+        N=2;
+        jprime=true;
+        while (N < ord && jprime) { 
+          while (MULT[N] < J){
+            MULT[N] += no_of_primes[N] + no_of_primes[N]; 
+          }
+          if (MULT[N] == J) {
+            jprime=false;
+          } 
+          N++;
+        }
+    } while (!jprime);
+    K++;
+    no_of_primes[K]=J;
   }
-  N=2;
-  JPRIME=true;
-  while (N < ORD && JPRIME) { while (MULT[N] < J)
-  MULT[N] += P[N] + P[N]; 
-  if (MULT[N] == J) 
-  {JPRIME=false;} N++;}
-  } while (!JPRIME);
-  K++;
-  P[K]=J;
-  }
-  PAGENUMBER = 1;
-  PAGEOFFSET = 1;
-  while (PAGEOFFSET <= M) {
+
+  pagenumber = 1;
+  pageoffset = 1;
+  
+  while (pageoffset <= max_number_of_primes) {
     std::cout << "The First ";
-    std::cout << M ;
+    std::cout << max_number_of_primes ;
     std::cout << " Prime Numbers --- Page ";
-    std::cout << PAGENUMBER;
+    std::cout << pagenumber;
     std::cout << std::endl;
-    for (ROWOFFSET=PAGEOFFSET; ROWOFFSET <= PAGEOFFSET+RR-1; ROWOFFSET++) {
-    for (C=0; C <= CC-1; C++)
-        if (ROWOFFSET+C*RR <= M)
-          std::cout << std::setw(10) << P[ROWOFFSET+C*RR];
-    std::cout << std::endl;
+    for (rowoffset=pageoffset; rowoffset <= pageoffset+rows-1; rowoffset++) {
+      for (C=0; C <= coloumn-1; C++){
+        if (rowoffset+C*rows <= max_number_of_primes){
+          std::cout << std::setw(10) << no_of_primes[rowoffset+C*rows];
+        }
+      }
+      std::cout << std::endl;
     }
     std::cout << "\f" << std::endl;
-    PAGENUMBER++;
-    PAGEOFFSET += RR*CC;
+    pagenumber++;
+    pageoffset += rows*coloumn;
   }
 }
