@@ -16,7 +16,7 @@ bool GeneratePrime :: check_prime(vector<int> mult,vector<int> no_of_primes, int
 }
 vector<int> GeneratePrime :: generate(int inp_no){
 
-  const int kOrdMax = 30;
+  //30
   const int max_number_of_primes = inp_no;
   vector<int> no_of_primes(max_number_of_primes+1);
   bool jprime;

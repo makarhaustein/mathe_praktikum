@@ -10,6 +10,8 @@
 # include <vector>
 using std :: vector ;
   class GeneratePrime {
+    private: 
+       const int kOrdMax = 30;
     public: 
           bool check_prime(vector<int> mult,vector<int> no_of_primes, int ord,int current ,bool jprime); 
           vector<int> generate(int inp_no); 
@@ -21,7 +23,7 @@ using std :: vector ;
       const int kRows = 50;
       const int kColoumn = 4;
     //maybe a Constructor
-    
+
     public:
       void print_rows(vector<int> no_of_primes, int rowoffset, int max_number_of_primes); 
       void print(int inp_no, vector<int> no_of_primes); 
