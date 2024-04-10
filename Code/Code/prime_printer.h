@@ -6,55 +6,68 @@
 #include <iomanip>
 # include <vector>
 using std :: vector ;
+const int kRows = 50;
+const int kColoumn = 4;
 
-void print(int inp_no) {
+bool check_prime(vector<int> mult,vector<int> no_of_primes, int ord,int current ,bool jprime=true ){
+  int n = 2; 
+  while (n < ord && jprime) { 
+    while (mult[n] < current){
+      mult[n] += no_of_primes[n] + no_of_primes[n]; 
+    }
+    if (mult[n] == current) {
+      jprime=false;
+    } 
+    n++;
+  }
+  return jprime; 
+}
+vector<int> generate(int inp_no){
+  const int kOrdMax = 30;
   const int max_number_of_primes = inp_no;
-  const int rows = 50;
-  const int coloumn = 4;
-  const int ordmax = 30;
   vector<int> no_of_primes(max_number_of_primes+1);
+  int current;
+  int index;
+  bool jprime;
+  int ord;
+  int square;
+  vector<int> mult(kOrdMax+1);
+  current=1;
+  index=1;
+  no_of_primes[1] = 2;
+  ord = 2;
+  square = 9;
+
+  while (index < max_number_of_primes) {
+    //do finds the next prime number
+    do {
+        current += 2;
+        if (current == square) {
+          ord++;  
+          square=no_of_primes[ord]*no_of_primes[ord];   
+          mult[ord-1]=current;
+        }
+        jprime=check_prime(mult, no_of_primes, ord, current);
+    } while (!jprime);
+    index++;
+    no_of_primes[index]=current;
+  }
+return no_of_primes;
+}
+void print_rows(vector<int> no_of_primes, int rowoffset, int max_number_of_primes) {
+  for (int c =0; c <= kColoumn-1; c++){
+        if (rowoffset+c*kRows <= max_number_of_primes){
+          std::cout << std::setw(10) << no_of_primes[rowoffset+c*kRows];
+        }
+      }
+
+}
+void print(int inp_no, vector<int> no_of_primes) {
+  const int max_number_of_primes = inp_no;
   int pagenumber;
   int pageoffset;
   int rowoffset;
-  int c;
-  int j;
-  int k;
-  bool jprime;
-  int ord;
-  int SQUARE;
-  int N;
-  vector<int> MULT(ordmax+1);
-
-  j=1;
-  k=1;
-  no_of_primes[1] = 2;
-  ord = 2;
-  SQUARE = 9;
-
-  while (k < max_number_of_primes) {
-    do {
-        j += 2;
-        if (j == SQUARE) {
-          ord++;  
-          SQUARE=no_of_primes[ord]*no_of_primes[ord];   
-          MULT[ord-1]=j;
-        }
-        N=2;
-        jprime=true;
-        while (N < ord && jprime) { 
-          while (MULT[N] < j){
-            MULT[N] += no_of_primes[N] + no_of_primes[N]; 
-          }
-          if (MULT[N] == j) {
-            jprime=false;
-          } 
-          N++;
-        }
-    } while (!jprime);
-    k++;
-    no_of_primes[k]=j;
-  }
-
+  
   pagenumber = 1;
   pageoffset = 1;
   
@@ -64,16 +77,12 @@ void print(int inp_no) {
     std::cout << " Prime Numbers --- Page ";
     std::cout << pagenumber;
     std::cout << std::endl;
-    for (rowoffset=pageoffset; rowoffset <= pageoffset+rows-1; rowoffset++) {
-      for (c=0; c <= coloumn-1; c++){
-        if (rowoffset+c*rows <= max_number_of_primes){
-          std::cout << std::setw(10) << no_of_primes[rowoffset+c*rows];
-        }
-      }
+    for (rowoffset=pageoffset; rowoffset <= pageoffset+kRows-1; rowoffset++) {
+      print_rows(no_of_primes, rowoffset, max_number_of_primes); 
       std::cout << std::endl;
     }
     std::cout << "\f" << std::endl;
     pagenumber++;
-    pageoffset += rows*coloumn;
+    pageoffset += kRows*kColoumn;
   }
 }
