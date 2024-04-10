@@ -8,8 +8,9 @@ void TestPrintPrimes() {
   std::streambuf *coutbuf = std::cout.rdbuf();
   std::cout.rdbuf(out.rdbuf()); // cout auf Datei "YourPrint.txt" umleiten
   GeneratePrime primes;
+  PrimePrinter printer;
   vector<int> temp = primes.generate(300); 
-  primes.print(300, temp); 
+  printer.print(300, temp); 
   out.close();
 
   std::ifstream goldFile("PerfectPrint.txt");
