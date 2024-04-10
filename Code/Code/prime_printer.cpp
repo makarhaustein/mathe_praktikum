@@ -16,20 +16,18 @@ bool GeneratePrime :: check_prime(vector<int> mult,vector<int> no_of_primes, int
   return jprime; 
 }
 vector<int> GeneratePrime :: generate(int inp_no){
+    
   const int kOrdMax = 30;
   const int max_number_of_primes = inp_no;
   vector<int> no_of_primes(max_number_of_primes+1);
-  int current;
-  int index;
   bool jprime;
-  int ord;
-  int square;
   vector<int> mult(kOrdMax+1);
-  current=1;
-  index=1;
+
+  int current=1;
+  int index=1;
   no_of_primes[1] = 2;
-  ord = 2;
-  square = 9;
+  int ord = 2;
+  int square = 9;
 
   while (index < max_number_of_primes) {
     //do finds the next prime number
