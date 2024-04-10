@@ -1,7 +1,6 @@
 #include "prime_printer.h"
 
-const int kRows = 50;
-const int kColoumn = 4;
+
 bool GeneratePrime :: check_prime(vector<int> mult,vector<int> no_of_primes, int ord,int current ,bool jprime=true ){
   int n = 2; 
   while (n < ord && jprime) { 
