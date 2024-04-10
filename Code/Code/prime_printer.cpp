@@ -1,8 +1,8 @@
 #include "prime_printer.h"
-using namespace P; 
+
 const int kRows = 50;
 const int kColoumn = 4;
-bool generate_prime :: check_prime(vector<int> mult,vector<int> no_of_primes, int ord,int current ,bool jprime=true ){
+bool GeneratePrime :: check_prime(vector<int> mult,vector<int> no_of_primes, int ord,int current ,bool jprime=true ){
   int n = 2; 
   while (n < ord && jprime) { 
     while (mult[n] < current){
@@ -15,7 +15,7 @@ bool generate_prime :: check_prime(vector<int> mult,vector<int> no_of_primes, in
   }
   return jprime; 
 }
-vector<int> generate_prime :: generate(int inp_no){
+vector<int> GeneratePrime :: generate(int inp_no){
   const int kOrdMax = 30;
   const int max_number_of_primes = inp_no;
   vector<int> no_of_primes(max_number_of_primes+1);
@@ -47,7 +47,7 @@ vector<int> generate_prime :: generate(int inp_no){
   }
 return no_of_primes;
 }
-void generate_prime :: print_rows(vector<int> no_of_primes, int rowoffset, int max_number_of_primes) {
+void GeneratePrime :: print_rows(vector<int> no_of_primes, int rowoffset, int max_number_of_primes) {
   for (int c =0; c <= kColoumn-1; c++){
         if (rowoffset+c*kRows <= max_number_of_primes){
           std::cout << std::setw(10) << no_of_primes[rowoffset+c*kRows];
@@ -55,7 +55,7 @@ void generate_prime :: print_rows(vector<int> no_of_primes, int rowoffset, int m
       }
 
 }
-void generate_prime :: print(int inp_no, vector<int> no_of_primes) {
+void GeneratePrime :: print(int inp_no, vector<int> no_of_primes) {
   const int max_number_of_primes = inp_no;
   int pagenumber;
   int pageoffset;
