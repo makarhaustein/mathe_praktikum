@@ -1,7 +1,6 @@
 #include "prime_printer.h"
 
-
-bool GeneratePrime :: check_prime(vector<int> mult,vector<int> no_of_primes, int ord,int current ,bool jprime=true ){
+bool GeneratePrime::check_prime(vector<int> mult,vector<int> no_of_primes, int ord,int current ,bool jprime=true ){
   int n = 2; 
   while (n < ord && jprime) { 
     while (mult[n] < current){
@@ -14,7 +13,7 @@ bool GeneratePrime :: check_prime(vector<int> mult,vector<int> no_of_primes, int
   }
   return jprime; 
 }
-vector<int> GeneratePrime :: generate(int inp_no){
+vector<int> GeneratePrime::generate(int inp_no){
 
   //30
   const int max_number_of_primes = inp_no;
@@ -24,7 +23,7 @@ vector<int> GeneratePrime :: generate(int inp_no){
 
   int current=1;
   int index=1;
-  no_of_primes[1] = 2;
+  no_of_primes[index] = 2;
   int ord = 2;
   int square = 9;
 

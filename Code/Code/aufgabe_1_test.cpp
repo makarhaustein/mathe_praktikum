@@ -32,8 +32,34 @@ void TestPrintPrimes() {
   remove("YourPrint.txt");
   std::cout.rdbuf(coutbuf); // cout wieder auf Bildschirm leiten
 }
+void TestChecker(){
+  GeneratePrime primes; 
+  vector<int> multiples_1 = {0,0,0};
+  vector<int> prime ={0,0,2,0};  
+  int current = 4; 
+  int order = 3;
+  bool prime_check = primes.check_prime(multiples_1,prime,order,current, true); 
+  if(prime_check == false){
+     std:: cout << "1 Test passed \n" ;
+  } else{
+    std:: cout << "Test failed";
+  }
+  multiples_1[2] = 9; 
+  prime[0] = 2; 
+  prime[1] = 3; 
+  prime[3] = 5; 
+  order = 3;
+  current = 7; 
+  prime_check = primes.check_prime(multiples_1,prime,order,current, true); 
+  if(prime_check == true){
+     std:: cout << "2 Test passed";
+  } else{
+    std:: cout << "2 Test failed";
+  }
+}
 
 int main() {
   TestPrintPrimes();
+  TestChecker(); 
   return 0;
 }

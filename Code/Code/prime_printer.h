@@ -8,7 +8,7 @@
 #include <iostream>
 #include <iomanip>
 # include <vector>
-using std :: vector ;
+using std::vector ;
   class GeneratePrime {
     private: 
        const int kOrdMax = 30;
@@ -29,6 +29,4 @@ using std :: vector ;
       void print(int inp_no, vector<int> no_of_primes); 
     
   };
-  
-  
 #endif
