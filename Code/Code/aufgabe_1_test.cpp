@@ -40,9 +40,9 @@ void TestChecker(){
   int order = 3;
   bool prime_check = primes.check_prime(multiples_1,prime,order,current, true); 
   if(prime_check == false){
-     std:: cout << "1 Test passed \n" ;
+    std:: cout << "1 Test passed \n" ;
   } else{
-    std:: cout << "Test failed";
+    std:: cout << "Test failed \n";
   }
   multiples_1[2] = 9; 
   prime[0] = 2; 
@@ -52,12 +52,18 @@ void TestChecker(){
   current = 7; 
   prime_check = primes.check_prime(multiples_1,prime,order,current, true); 
   if(prime_check == true){
-     std:: cout << "2 Test passed";
+    std:: cout << "2 Test passed \n";
   } else{
-    std:: cout << "2 Test failed";
+    std:: cout << "2 Test failed \n";
   }
 }
-
+void Testgenerate(){
+  GeneratePrime prime; 
+  vector<int> (10) = prime.generate(10); 
+  //another programm that creates prime and compare the results 
+  
+}
+//final test for printing rowwise. 
 int main() {
   TestPrintPrimes();
   TestChecker(); 
