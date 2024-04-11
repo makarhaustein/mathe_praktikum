@@ -13,10 +13,10 @@ bool GeneratePrime::check_prime(vector<int> mult,vector<int> no_of_primes, int o
   }
   return jprime; 
 }
-vector<int> GeneratePrime::generate(int inp_no){
 
-  //30
-  const int max_number_of_primes = inp_no;
+vector<int> GeneratePrime::generate(int amount){
+  const int kOrdMax = 30;
+  const int max_number_of_primes = amount;
   vector<int> no_of_primes(max_number_of_primes+1);
   bool jprime;
   vector<int> mult(kOrdMax+1);
@@ -28,7 +28,6 @@ vector<int> GeneratePrime::generate(int inp_no){
   int square = 9;
 
   while (index < max_number_of_primes) {
-    //do finds the next prime number
     do {
         current += 2;
         if (current == square) {
@@ -43,15 +42,16 @@ vector<int> GeneratePrime::generate(int inp_no){
   }
 return no_of_primes;
 }
-void PrimePrinter :: print_rows(vector<int> no_of_primes, int rowoffset, int max_number_of_primes) {
+
+void PrimePrinter::print_rows(vector<int> no_of_primes, int rowoffset, int max_number_of_primes) {
   for (int c = 0; c <= kColoumn-1; c++){
         if (rowoffset+c*kRows <= max_number_of_primes){
           std::cout << std::setw(10) << no_of_primes[rowoffset+c*kRows];
         }
       }
-
 }
-void PrimePrinter :: print(int inp_no, vector<int> no_of_primes) {
+
+void PrimePrinter::print(int inp_no, vector<int> no_of_primes) {
   const int max_number_of_primes = inp_no;
   int pagenumber = 1;
   int pageoffset = 1;
