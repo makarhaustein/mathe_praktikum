@@ -13,7 +13,7 @@ using std::vector;
 
 class GeneratePrime {
   public: 
-        bool check_prime(vector<int> mult,vector<int> no_of_primes, int ord,int current ,bool jprime); 
+        bool check_prime(vector<int> mult,vector<int> primes_array, int ord, int current); 
         vector<int> generate(int inp_no);      
 };
 
