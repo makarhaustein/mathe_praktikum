@@ -15,25 +15,26 @@ void TestPrintPrimes() {
   printer.print(300, temp); 
   out.close();
 
-  std::ifstream goldFile("PerfectPrint.txt");
-  std::ifstream leadFile("YourPrint.txt");
+  std::ifstream examplFile("PerfectPrint.txt");
+  std::ifstream computedFile("YourPrint.txt");
 
-  std::string goldLine;
-  std::string leadLine;
+  std::string exampleLine;
+  std::string computedLine;
   int i = 1;
   // Zeile fuer Zeile vergleichen
-  while (std::getline(goldFile, goldLine)) {
+  while (std::getline(examplFile, exampleLine)) {
     std::stringstream ss;
     ss << "Line " << std::to_string(i) << "\t:";
-    std::getline(leadFile, leadLine);
-    test.AssertEq(ss.str(), goldLine, leadLine);
+    std::getline(computedFile, computedLine);
+    test.AssertEq(ss.str(), exampleLine, computedLine);
     i++;
   }
-  std::getline(leadFile, leadLine);
-  test.Assert("No more lines :", leadFile.eof());
+  std::getline(computedFile, computedLine);
+  test.Assert("No more lines :", computedFile.eof());
   remove("YourPrint.txt");
   std::cout.rdbuf(coutbuf); // cout wieder auf Bildschirm leiten
 }
+
 void TestChecker(){
   GeneratePrime primes; 
   vector<int> multiples_1 = {0,0,0};
@@ -59,6 +60,7 @@ void TestChecker(){
     std:: cout << "2 Test failed \n";
   }
 }
+
 void Testgenerate(){
   GeneratePrime prime; 
   int to_be_tested = 10;
@@ -94,6 +96,7 @@ void Testgenerate(){
     std:: cout << "3 Test failed \n";
   } 
 }
+
 void TestRowPrinter(){
   mapra::MapraTest test("RowTester");
   std::ofstream out("YourRow.txt");
@@ -104,19 +107,19 @@ void TestRowPrinter(){
   printer.print_rows(temp,1,300); 
   out.close();
 
-  std::ifstream goldFile("YourRow.txt");
-  std::ifstream leadFile("PerfectRow.txt");
+  std::ifstream examplFile("YourRow.txt");
+  std::ifstream computedFile("PerfectRow.txt");
 
-  std::string goldLine;
-  std::string leadLine;
+  std::string exampleLine;
+  std::string computedLine;
  
-  std::getline(goldFile, goldLine);
+  std::getline(examplFile, exampleLine);
   std::stringstream ss;
   ss << "Line " << std::to_string(1) << "\t:";
-  std::getline(leadFile, leadLine);
-  test.AssertEq(ss.str(), goldLine, leadLine);
- 
+  std::getline(computedFile, computedLine);
+  test.AssertEq(ss.str(), exampleLine, computedLine);
 }
+
 int main() {
   TestPrintPrimes();
   TestChecker(); 
