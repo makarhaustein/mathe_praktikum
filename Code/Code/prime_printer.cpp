@@ -1,24 +1,24 @@
 #include "prime_printer.h"
 
-bool GeneratePrime::check_prime(vector<int> mult,vector<int> no_of_primes, int ord,int current ,bool jprime=true ){
-  int n = 2; 
-  while (n < ord && jprime) { 
-    while (mult[n] < current){
-      mult[n] += no_of_primes[n] + no_of_primes[n]; 
+bool GeneratePrime::check_prime(vector<int> mult,vector<int> no_of_primes, int ord,int current ,bool j_prime=true ){
+  int index = 2; 
+  while (index < ord && j_prime) { 
+    while (mult[index] < current){
+      mult[index] += no_of_primes[index] + no_of_primes[index]; 
     }
-    if (mult[n] == current) {
-      jprime=false;
+    if (mult[index] == current) {
+      j_prime=false;
     } 
-    n++;
+    index++;
   }
-  return jprime; 
+  return j_prime; 
 }
 
 vector<int> GeneratePrime::generate(int amount){
   const int kOrdMax = 30;
   const int max_number_of_primes = amount;
   vector<int> no_of_primes(max_number_of_primes+1);
-  bool jprime;
+  bool j_prime;
   vector<int> mult(kOrdMax+1);
 
   int current=1;
@@ -35,8 +35,8 @@ vector<int> GeneratePrime::generate(int amount){
           square=no_of_primes[ord]*no_of_primes[ord];   
           mult[ord-1]=current;
         }
-        jprime=check_prime(mult, no_of_primes, ord, current);
-    } while (!jprime);
+        j_prime=check_prime(mult, no_of_primes, ord, current);
+    } while (!j_prime);
     index++;
     no_of_primes[index]=current;
   }
