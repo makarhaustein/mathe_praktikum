@@ -1,5 +1,7 @@
 #include "mapra_test.h"
 #include "prime_printer.h"
+#include <iostream>
+#include <cmath>
 
 void TestPrintPrimes() {
   mapra::MapraTest test("PrimePrintTester");
@@ -59,13 +61,66 @@ void TestChecker(){
 }
 void Testgenerate(){
   GeneratePrime prime; 
-  vector<int> (10) = prime.generate(10); 
-  //another programm that creates prime and compare the results 
-  
+  int to_be_tested = 10;
+  vector<int> computed_value(to_be_tested); 
+  computed_value = prime.generate(to_be_tested); //hopefull generate 2,3,5,7,11,13,17,19,23,29
+
+  int n  = 900; 
+  vector<bool> value (n); //all values set to false
+  vector<int>  prime_nr(to_be_tested); 
+  int index = 1; 
+  for (int i = 2; i < sqrt(n); i++){
+      if (!value[i] ){
+        prime_nr[index] = i; 
+        index++; 
+        if (index == to_be_tested){
+          break;
+        }
+        for (int j = i*i; j < n; j += i){
+          value[j] = true; 
+        }  
+      }
+  }
+  bool correct = true; 
+  for ( int i = 0; i < 10; i++){
+    if (prime_nr[i] != computed_value[i]){
+      correct = false; 
+      break; 
+    }
+  }
+  if(correct == true){
+    std:: cout << "3 Test passed \n";
+  } else{
+    std:: cout << "3 Test failed \n";
+  } 
 }
-//final test for printing rowwise. 
+void TestRowPrinter(){
+  mapra::MapraTest test("RowTester");
+  std::ofstream out("YourRow.txt");
+  std::cout.rdbuf(out.rdbuf()); // cout auf Datei "YourPrint.txt" umleiten
+  GeneratePrime primes;
+  PrimePrinter printer;
+  vector<int> temp = primes.generate(300); 
+  printer.print_rows(temp,1,300); 
+  out.close();
+
+  std::ifstream goldFile("YourRow.txt");
+  std::ifstream leadFile("PerfectRow.txt");
+
+  std::string goldLine;
+  std::string leadLine;
+ 
+  std::getline(goldFile, goldLine);
+  std::stringstream ss;
+  ss << "Line " << std::to_string(1) << "\t:";
+  std::getline(leadFile, leadLine);
+  test.AssertEq(ss.str(), goldLine, leadLine);
+ 
+}
 int main() {
   TestPrintPrimes();
   TestChecker(); 
+  Testgenerate();
+  TestRowPrinter();
   return 0;
 }
