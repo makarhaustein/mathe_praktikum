@@ -116,16 +116,24 @@ std::vector<unsigned int> Merge(std::vector<unsigned int> input_id, int left, st
     int i = 0, j = 0, k = 0;
     while (i < left && j < right) {
         if (input_id[i] < input_id2[j]) {
-            result[k++] = input_id[i++];
+            result[k] = input_id[i];
+            k++; 
+            i++; 
         } else {
-            result[k++] = input_id2[j++];
+            result[k] = input_id2[j];
+            k++; 
+            j++; 
         }
     }
     while (i < left) {
-        result[k++] = input_id[i++];
+        result[k] = input_id[i];
+        k++; 
+        i++; 
     }
     while (j < right) {
-        result[k++] = input_id2[j++];
+        result[k] = input_id2[j];
+        k++; 
+        j++; 
     }
     return result;
 }

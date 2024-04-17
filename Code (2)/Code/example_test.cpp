@@ -6,17 +6,65 @@
 #include <iostream>
 #include <string>
 
-int main() {
+
+void TestBubblesort() {
+  mapra::MapraTest test("BubbleSort");
   std:: vector<unsigned int> trial = {6,5,4,2,1,0,3}; 
+  std:: vector<unsigned int> expected = {0,1,2,3,4,5,6}; 
   SortAlgorithm test1; 
-  trial = test1.MergeSort(trial);
-  for ( int i = 0; i < trial.size(); i++){
-    std:: cout << trial[i]; 
-  }
-  mapra::MapraTest test("Beispiel");
-  test.Assert("cin works", std::cin.good());
-  test.AssertEq("max(-4,3) is 3", 3, std::max(-4, 3));
-  test.AssertEq("max(3,-4) is 3", 2, std::max(3, -4));  // extra falsch
-  return 0;
+  trial = test1.BubbleSort(trial);
+  test.AssertEq("Bubblesort",trial, expected );
 }
 
+void TestAuswahl() {
+  mapra::MapraTest test("AuswahlSort");
+  std:: vector<unsigned int> trial = {6,5,4,2,1,0,3}; 
+  std:: vector<unsigned int> expected = {0,1,2,3,4,5,6}; 
+  SortAlgorithm test1; 
+  trial = test1.AuswahlSort(trial);
+  test.AssertEq("AuswahlSort",trial, expected );
+}
+void TestInsertSort() {
+  mapra::MapraTest test("InsertSort");
+  std:: vector<unsigned int> trial = {6,5,4,2,1,0,3}; 
+  std:: vector<unsigned int> expected = {0,1,2,3,4,5,6}; 
+  SortAlgorithm test1; 
+  trial = test1.InsertSort(trial);
+  test.AssertEq("InsertSort",trial, expected );
+}
+void TestHeapSort() {
+  mapra::MapraTest test("HeapSort");
+  std:: vector<unsigned int> trial = {6,5,4,2,1,0,3}; 
+  std:: vector<unsigned int> expected = {0,1,2,3,4,5,6}; 
+  SortAlgorithm test1; 
+  trial = test1.HeapSort(trial);
+  test.AssertEq("HeapSort",trial, expected );
+}
+
+void TestQuickSortEasy() {
+  mapra::MapraTest test("QuickSortEasy");
+  std:: vector<unsigned int> trial = {6,5,4,2,1,0,3}; 
+  std:: vector<unsigned int> expected = {0,1,2,3,4,5,6}; 
+  SortAlgorithm test1; 
+  trial = test1.QuickSortEasy(trial);
+  test.AssertEq("QuickSortEasy",trial, expected );
+}
+void TestMergeSort() {
+  mapra::MapraTest test("QuickSortEasy");
+  std:: vector<unsigned int> trial = {6,5,4,2,1,0,3}; 
+  std:: vector<unsigned int> expected = {0,1,2,3,4,5,6}; 
+  SortAlgorithm test1; 
+  trial = test1.MergeSort(trial);
+  test.AssertEq("MergeSort",trial, expected );
+}
+
+
+int main() {
+  TestBubblesort(); 
+  TestAuswahl(); 
+  TestInsertSort(); 
+  TestHeapSort(); 
+  TestQuickSortEasy(); 
+  TestMergeSort(); 
+  return 0;
+}
