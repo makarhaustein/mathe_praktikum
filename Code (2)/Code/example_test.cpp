@@ -7,10 +7,10 @@
 #include <string>
 
 int main() {
-  std:: vector<unsigned int> trial = {0,1,2,3,4,5,6}; 
+  std:: vector<unsigned int> trial = {6,5,4,2,1,0,3}; 
   SortAlgorithm test1; 
-  trial = test1.HeapSort(trial);
-  for ( int i = 0; i < 7; i++){
+  trial = test1.QuickSortEasy(trial);
+  for ( int i = 0; i < trial.size(); i++){
     std:: cout << trial[i]; 
   }
   mapra::MapraTest test("Beispiel");

@@ -79,3 +79,35 @@ std::vector<unsigned int> SortAlgorithm:: HeapSort (std::vector<unsigned int>inp
     return input_id; 
 }
 
+int pivoted_element_index; 
+std:: vector<unsigned int> Pivotsorted(std:: vector<unsigned int> input_id, int left, int right ,int pivot_index){
+  while (left < right)  {
+      while (input_id[pivot_index] >  input_id[left] ){
+       left++; 
+      }
+      while (input_id[pivot_index] <= input_id[right] ){
+       right--; 
+      }
+      if(left < right){
+       std:: swap(input_id[left], input_id[right]); 
+       left++; 
+       right--; 
+      }
+  }
+  std:: swap(input_id[left], input_id[pivot_index]); 
+  pivoted_element_index = left; 
+  return input_id; 
+}
+std::vector<unsigned int> QuickSortEasy_private(std::vector<unsigned int> input_id, int left, int right, int pivot_i ){
+  if (left< right){
+    input_id  = Pivotsorted(input_id, left, right, pivot_i); 
+    input_id = QuickSortEasy_private(input_id,left, pivoted_element_index-2,pivoted_element_index-1); 
+    input_id = QuickSortEasy_private(input_id,pivoted_element_index, right,pivot_i); 
+  }
+   return input_id; 
+  
+}
+std::vector<unsigned int> SortAlgorithm:: QuickSortEasy( std::vector<unsigned int> input_id){
+  input_id = QuickSortEasy_private(input_id, 0, input_id.size()-2, input_id.size()-1); 
+  return input_id; 
+}
