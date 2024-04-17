@@ -29,5 +29,16 @@ std::vector<unsigned int> SortAlgorithm:: AuswahlSort(std::vector<unsigned int> 
     }  
   return input_id; 
 }
-
+ std::vector<unsigned int> SortAlgorithm:: InsertSort( std::vector<unsigned int> input_id){
+  int index; 
+  for (int i = 1; i < input_id.size(); i++){
+    for (int j = i; j > 0; j--){
+      if (input_id[j] < input_id[j-1]){
+        std::swap(input_id[j], input_id[j-1]);
+      }
+    } 
+  }
+  return input_id; 
+ }
+ 
 
