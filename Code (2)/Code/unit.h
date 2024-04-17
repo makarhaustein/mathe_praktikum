@@ -9,8 +9,8 @@
 
 namespace mapra {
 
-// Konstanten
-inline constexpr unsigned int kNumExamples = 4;
+// Konstanten inline
+ constexpr unsigned int kNumExamples = 4;
 
 // Funktionen
 std::vector<unsigned int> GetExample(unsigned int example_id,
