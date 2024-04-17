@@ -9,7 +9,7 @@
 int main() {
   std:: vector<unsigned int> trial = {6,5,4,3,2,1,0}; 
   SortAlgorithm test1; 
-  trial = test1.BubbleSort(trial);
+  trial = test1.AuswahlSort(trial);
   for ( int i = 0; i < 7; i++){
     std:: cout << trial[i]; 
   }
