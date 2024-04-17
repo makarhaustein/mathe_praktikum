@@ -9,7 +9,7 @@
 int main() {
   std:: vector<unsigned int> trial = {6,5,4,2,1,0,3}; 
   SortAlgorithm test1; 
-  trial = test1.QuickSortEasy(trial);
+  trial = test1.MergeSort(trial);
   for ( int i = 0; i < trial.size(); i++){
     std:: cout << trial[i]; 
   }

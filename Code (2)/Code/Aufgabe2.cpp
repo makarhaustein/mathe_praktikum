@@ -111,3 +111,33 @@ std::vector<unsigned int> SortAlgorithm:: QuickSortEasy( std::vector<unsigned in
   input_id = QuickSortEasy_private(input_id, 0, input_id.size()-2, input_id.size()-1); 
   return input_id; 
 }
+std::vector<unsigned int> Merge(std::vector<unsigned int> input_id, int left, std::vector<unsigned int> input_id2, int right) {
+    std::vector<unsigned int> result(left + right);
+    int i = 0, j = 0, k = 0;
+    while (i < left && j < right) {
+        if (input_id[i] < input_id2[j]) {
+            result[k++] = input_id[i++];
+        } else {
+            result[k++] = input_id2[j++];
+        }
+    }
+    while (i < left) {
+        result[k++] = input_id[i++];
+    }
+    while (j < right) {
+        result[k++] = input_id2[j++];
+    }
+    return result;
+}
+
+std::vector<unsigned int> SortAlgorithm::MergeSort(std::vector<unsigned int> input_id) {
+    if (input_id.size() > 1) {
+        int mid = input_id.size() / 2;
+        std::vector<unsigned int> left_array(input_id.begin(), input_id.begin() + mid);
+        std::vector<unsigned int> right_array(input_id.begin() + mid, input_id.end());
+        left_array = MergeSort(left_array);
+        right_array = MergeSort(right_array);
+        input_id = Merge(left_array, mid, right_array, input_id.size() - mid);
+    }
+    return input_id;
+}
