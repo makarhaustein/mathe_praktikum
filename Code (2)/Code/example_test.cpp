@@ -7,9 +7,9 @@
 #include <string>
 
 int main() {
-  std:: vector<unsigned int> trial = {6,5,4,3,2,1,0}; 
+  std:: vector<unsigned int> trial = {0,1,2,3,4,5,6}; 
   SortAlgorithm test1; 
-  trial = test1.InsertSort(trial);
+  trial = test1.HeapSort(trial);
   for ( int i = 0; i < 7; i++){
     std:: cout << trial[i]; 
   }
