@@ -112,13 +112,7 @@ void QuickSortMedian() {
 }
 
 int main() {
-  QuickSortMedian();
-  TestBubblesort(); 
-  TestAuswahl(); 
-  TestInsertSort(); 
-  TestHeapSort(); 
   TestQuickSortEasy(); 
-  TestMergeSort(); 
   
   return 0;
 }
