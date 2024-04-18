@@ -100,9 +100,9 @@ std:: vector<unsigned int> Pivotsorted(std:: vector<unsigned int> input_id, int 
   return input_id; 
 }
 std::vector<unsigned int> QuickSortEasy_private(std::vector<unsigned int> input_id, int left, int right, int pivot_i, bool median ){
-  if (left< right){
+  if (left< right){ 
     input_id  = Pivotsorted(input_id, left, right, pivot_i, median); 
-    input_id = QuickSortEasy_private(input_id,left, pivoted_element_index-2,pivoted_element_index-1, median); 
+    input_id = QuickSortEasy_private(input_id,left, pivoted_element_index-1,pivoted_element_index-1, median); 
     input_id = QuickSortEasy_private(input_id,pivoted_element_index, right,pivot_i, median); 
   }
    return input_id; 
