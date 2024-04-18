@@ -103,7 +103,7 @@ void QuickSortMedian() {
 int main() {
   TestQuickSortEasy(); 
   QuickSortMedian(); 
-   std:: vector<unsigned int> trial; 
+  std:: vector<unsigned int> trial; 
   for (int i = 0; i < 4; i++){
    trial = mapra:: GetExample(i,7); 
    SortAlgorithm test1; 
