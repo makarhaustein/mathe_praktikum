@@ -160,6 +160,7 @@ std:: vector<unsigned int> Mediansort(std::vector<unsigned int> input_id, int le
       } else if (pivot_array[1] == input_id[(left+right)/2] ){
         std:: swap(input_id[(left+right)/2], input_id[right]); 
       }
+      return input_id; 
   }
   return input_id; 
 }
