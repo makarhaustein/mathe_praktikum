@@ -150,30 +150,31 @@ std::vector<unsigned int> SortAlgorithm::MergeSort(std::vector<unsigned int> inp
     }
     return input_id;
 }
-std:: vector<unsigned int> Mediansort(std::vector<unsigned int> input_id){
-  std:: vector<unsigned int> pivot_array  = {input_id[0], input_id[input_id.size()-1], input_id[input_id.size()/2]};
-  SortAlgorithm test; 
-  pivot_array = test.InsertSort(pivot_array); 
-  if (pivot_array[1] == input_id[0] ){
-     std:: swap(input_id[0], input_id[input_id.size()-1]); 
-  } else if (pivot_array[1] == input_id[input_id.size()/2] ){
-     std:: swap(input_id[input_id.size()/2], input_id[input_id.size()-1]); 
+std:: vector<unsigned int> Mediansort(std::vector<unsigned int> input_id, int left, int right){
+  if(left < right && (left+right)/2 > left){
+      std:: vector<unsigned int> pivot_array  = {input_id[left], input_id[right], input_id[(left+right)/2]};
+      SortAlgorithm test; 
+      pivot_array = test.InsertSort(pivot_array); 
+      if (pivot_array[1] == input_id[left] ){
+        std:: swap(input_id[left], input_id[right]); 
+      } else if (pivot_array[1] == input_id[(left+right)/2] ){
+        std:: swap(input_id[(left+right)/2], input_id[right]); 
+      }
   }
   return input_id; 
 }
 std::vector<unsigned int> QuickSortEasy_private_Median(std::vector<unsigned int> input_id, int left, int right, int pivot_i) {
-    if (input_id.size() > 2) {
-        input_id = Mediansort(input_id);
-    }
     if (left < right) {
+        input_id = Mediansort(input_id, left, right);
         input_id = Pivotsorted(input_id, left, right, pivot_i, true);
-        input_id = QuickSortEasy_private_Median(input_id, left, pivoted_element_index_median - 1, pivoted_element_index_median - 1);
+        input_id = QuickSortEasy_private_Median(input_id, left, pivoted_element_index_median - 2, pivoted_element_index_median - 1);
         input_id = QuickSortEasy_private_Median(input_id, pivoted_element_index_median+1, right, pivot_i);
     }
     return input_id;
 }
 
 std:: vector<unsigned int> SortAlgorithm:: QuickSortMedian(std::vector<unsigned int> input_id){
-  input_id = QuickSortEasy_private_Median(input_id, 0, input_id.size()-1, input_id.size()-1); 
+  input_id = QuickSortEasy_private_Median(input_id, 0, input_id.size()-1, input_id.size()-1);  
   return input_id; 
 }
+
