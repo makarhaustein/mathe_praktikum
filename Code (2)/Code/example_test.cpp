@@ -88,12 +88,6 @@ void TestMergeSort() {
   SortAlgorithm test1; 
   trial = test1.MergeSort(trial);
   test.AssertEq("MergeSort",trial, expected );
-  for (int i = 0; i < 4; i++){
-   trial = mapra:: GetExample(i,7); 
-   SortAlgorithm test1; 
-   trial =  test1.MergeSort(trial);
-   mapra::CheckSolution(trial); 
-  }
 }
 
 void QuickSortMedian() {
@@ -103,16 +97,31 @@ void QuickSortMedian() {
   SortAlgorithm test1; 
   trial = test1.QuickSortMedian(trial);
   test.AssertEq("QuickSortMedian",trial, expected );
+  
+}
+
+int main() {
+  TestQuickSortEasy(); 
+  QuickSortMedian(); 
+   std:: vector<unsigned int> trial; 
+  for (int i = 0; i < 4; i++){
+   trial = mapra:: GetExample(i,7); 
+   SortAlgorithm test1; 
+   trial =  test1.QuickSortEasy(trial);
+   mapra::CheckSolution(trial); 
+  }
   for (int i = 0; i < 4; i++){
    trial = mapra:: GetExample(i,7); 
    SortAlgorithm test1; 
    trial =  test1.QuickSortMedian(trial);
    mapra::CheckSolution(trial); 
   }
-}
+  TestAuswahl(); 
+  TestBubblesort(); 
+  TestHeapSort(); 
+  TestInsertSort(); 
+  TestMergeSort(); 
 
-int main() {
-  TestQuickSortEasy(); 
   
   return 0;
 }
