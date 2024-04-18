@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <iostream>
 #include <string>
+#include "unit.h"
 
 
 void TestBubblesort() {
@@ -50,7 +51,7 @@ void TestQuickSortEasy() {
   test.AssertEq("QuickSortEasy",trial, expected );
 }
 void TestMergeSort() {
-  mapra::MapraTest test("QuickSortEasy");
+  mapra::MapraTest test("MergeSort");
   std:: vector<unsigned int> trial = {6,5,4,2,1,0,3}; 
   std:: vector<unsigned int> expected = {0,1,2,3,4,5,6}; 
   SortAlgorithm test1; 
@@ -58,8 +59,17 @@ void TestMergeSort() {
   test.AssertEq("MergeSort",trial, expected );
 }
 
+void QuickSortMedian() {
+  mapra::MapraTest test("QuickSortMedian");
+  std:: vector<unsigned int> trial = {6,5,4,2,1,0,3}; 
+  std:: vector<unsigned int> expected = {0,1,2,3,4,5,6}; 
+  SortAlgorithm test1; 
+  trial = test1.QuickSortMedian(trial);
+  test.AssertEq("QuickSortMedian",trial, expected );
+}
 
 int main() {
+  QuickSortMedian();
   TestBubblesort(); 
   TestAuswahl(); 
   TestInsertSort(); 
