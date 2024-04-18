@@ -160,6 +160,7 @@ std:: vector<unsigned int> Mediansort(std::vector<unsigned int> input_id, int le
       } else if (pivot_array[1] == input_id[(left+right)/2] ){
         std:: swap(input_id[(left+right)/2], input_id[right]); 
       }
+      return input_id; 
   }
   return input_id; 
 }
@@ -167,7 +168,7 @@ std::vector<unsigned int> QuickSortEasy_private_Median(std::vector<unsigned int>
     if (left < right) {
         input_id = Mediansort(input_id, left, right);
         input_id = Pivotsorted(input_id, left, right, pivot_i, true);
-        input_id = QuickSortEasy_private_Median(input_id, left, pivoted_element_index_median - 2, pivoted_element_index_median - 1);
+        input_id = QuickSortEasy_private_Median(input_id, left, pivoted_element_index_median - 1, pivoted_element_index_median - 1);
         input_id = QuickSortEasy_private_Median(input_id, pivoted_element_index_median+1, right, pivot_i);
     }
     return input_id;

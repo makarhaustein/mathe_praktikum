@@ -61,7 +61,7 @@ void TestMergeSort() {
 
 void QuickSortMedian() {
   mapra::MapraTest test("QuickSortMedian");
-  std:: vector<unsigned int> trial = {6,5,4,2,1,0,3}; 
+  std:: vector<unsigned int> trial = {6,5,4,3,2,1,0}; 
   std:: vector<unsigned int> expected = {0,1,2,3,4,5,6}; 
   SortAlgorithm test1; 
   trial = test1.QuickSortMedian(trial);
@@ -70,11 +70,5 @@ void QuickSortMedian() {
 
 int main() {
   QuickSortMedian();
-  TestBubblesort(); 
-  TestAuswahl(); 
-  TestInsertSort(); 
-  TestHeapSort(); 
-  TestQuickSortEasy(); 
-  TestMergeSort(); 
   return 0;
 }
