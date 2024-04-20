@@ -1,16 +1,104 @@
 // Copyright (c) 2022, The MaPra Authors.
 
+#include "A2_SortierAlgorithmen.h"
 #include "mapra_test.h"
-
-#include <algorithm>
-#include <iostream>
+#include "unit.h"
 #include <string>
 
-int main() {
-  mapra::MapraTest test("Beispiel");
-  test.Assert("cin works", std::cin.good());
-  test.AssertEq("max(-4,3) is 3", 3, std::max(-4, 3));
-  test.AssertEq("max(3,-4) is 3", 2, std::max(3, -4));  // extra falsch
-  return 0;
+void TestBubblesort() {
+  mapra::MapraTest test("BubbleSort");
+  std::vector<unsigned int> trial = {6, 5, 4, 2, 1, 0, 3};
+  std::vector<unsigned int> expected = {0, 1, 2, 3, 4, 5, 6};
+
+  trial = BubbleSort(trial);
+  test.AssertEq("Bubblesort", expected, trial);
+  for (int i = 0; i < 4; i++) {
+    trial = mapra::GetExample(i, 7);
+
+    trial = BubbleSort(trial);
+    mapra::CheckSolution(trial);
+  }
 }
 
+void TestSelectionSort() {
+  mapra::MapraTest test("AuswahlSort");
+  std::vector<unsigned int> trial = {6, 5, 4, 2, 1, 0, 3};
+  std::vector<unsigned int> expected = {0, 1, 2, 3, 4, 5, 6};
+  trial = SelectionSort(trial);
+  test.AssertEq("AuswahlSort", expected, trial);
+  for (int i = 0; i < 4; i++) {
+    trial = mapra::GetExample(i, 7);
+    trial = SelectionSort(trial);
+    mapra::CheckSolution(trial);
+  }
+}
+void TestInsertSort() {
+  mapra::MapraTest test("InsertSort");
+  std::vector<unsigned int> trial = {6, 5, 4, 2, 1, 0, 3};
+  std::vector<unsigned int> expected = {0, 1, 2, 3, 4, 5, 6};
+  trial = InsertSort(trial);
+  test.AssertEq("InsertSort", expected, trial);
+  for (int i = 0; i < 4; i++) {
+    trial = mapra::GetExample(i, 7);
+    trial = InsertSort(trial);
+    mapra::CheckSolution(trial);
+  }
+}
+void TestHeapSort() {
+  mapra::MapraTest test("HeapSort");
+  std::vector<unsigned int> trial = {4, 6, 3, 5, 1, 0, 2};
+  std::vector<unsigned int> expected = {0, 1, 2, 3, 4, 5, 6};
+  trial = HeapSort(trial);
+  test.AssertEq("HeapSort", expected, trial);
+  for (int i = 0; i < 4; i++) {
+    trial = mapra::GetExample(i, 7);
+    trial = HeapSort(trial);
+    mapra::CheckSolution(trial);
+  }
+}
+/*
+void TestQuickSortEasy() {
+  mapra::MapraTest test("QuickSortEasy");
+  std::vector<unsigned int> trial = {6, 5, 4, 2, 1, 0, 3};
+  std::vector<unsigned int> expected = {0, 1, 2, 3, 4, 5, 6};
+  trial = QuickSortEasy(trial);
+  test.AssertEq("QuickSortEasy", expected, trial);
+  for (int i = 0; i < 4; i++) {
+    trial = mapra::GetExample(i, 7);
+    trial = QuickSortEasy(trial);
+    mapra::CheckSolution(trial);
+  }
+}
+void TestMergeSort() {
+  mapra::MapraTest test("MergeSort");
+  std::vector<unsigned int> trial = {6, 5, 4, 2, 1, 0, 3};
+  std::vector<unsigned int> expected = {0, 1, 2, 3, 4, 5, 6};
+  trial = MergeSort(trial);
+  test.AssertEq("MergeSort", expected, trial);
+  for (int i = 0; i < 4; i++) {
+    trial = mapra::GetExample(i, 7);
+    trial = MergeSort(trial);
+    mapra::CheckSolution(trial);
+  }
+}
+
+void QuickSortMedian() {
+  mapra::MapraTest test("QuickSortMedian");
+  std::vector<unsigned int> trial = {6, 5, 4, 2, 1, 0, 3};
+  std::vector<unsigned int> expected = {0, 1, 2, 3, 4, 5, 6};
+  trial = QuickSortMedian(trial);
+  test.AssertEq("QuickSortMedian", expected, trial);
+  for (int i = 0; i < 4; i++) {
+    trial = mapra::GetExample(i, 7);
+    trial = QuickSortMedian(trial);
+    mapra::CheckSolution(trial);
+  }
+}
+*/
+int main() { 
+    //TestBubblesort();
+    //TestSelectionSort();
+    //TestInsertSort();
+    TestHeapSort();
+    return 0;
+}
