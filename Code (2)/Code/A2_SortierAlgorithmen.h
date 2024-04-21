@@ -12,8 +12,12 @@ std::vector<unsigned int> SelectionSort(std::vector<unsigned int> array);
 std::vector<unsigned int> InsertSort(std::vector<unsigned int> array);
 void Heapify(std::vector<unsigned int>* array, int root_idx);
 std::vector<unsigned int> HeapSort(std::vector<unsigned int> array);
+int PartitionEasy(std::vector<unsigned int> *array, int low_idx, int high_idx);
 std::vector<unsigned int> QuickSortEasy(std::vector<unsigned int> array);
+void QuickSortEasyRec(std::vector<unsigned int>* array, int low_idx, int high_idx);
+int PartitionMedian(std::vector<unsigned int> *array, int low_idx, int high_idx);
 std::vector<unsigned int> QuickSortMedian(std::vector<unsigned int> array);
+void QuickSortMedianRec(std::vector<unsigned int> array);
 std::vector<unsigned int> MergeSort(std::vector<unsigned int> array);
 
 #endif  // Aufgabe2
