@@ -1,6 +1,6 @@
 #include "Aufgabe3.h"
 
-template<typename T> 
+template<class T> 
 std::vector <T> Aufgabe3:: BubbleSort( std::vector<T> input_id){
     for (int i = input_id.size()-1; i > 0; i--){
       for (int j = 0; j < i; j++){
@@ -11,13 +11,13 @@ std::vector <T> Aufgabe3:: BubbleSort( std::vector<T> input_id){
     }
   return input_id; 
 }
-template<typename T> 
+template<class T> 
 std::vector<T> Aufgabe3:: AuswahlSort(std::vector<T> input_id){
   int index; 
   bool smaller_found = false; 
-  for (int i = 0; i < input_id.size()-1; i++){
+  for ( unsigned int i = 0; i < input_id.size()-1; i++){
       index = i; 
-      for (int j = i+1; j < input_id.size(); j++){
+      for (unsigned int j = i+1; j < input_id.size(); j++){
         if (input_id[index] > input_id[j] ){
             index = j; 
             smaller_found = true; 
@@ -31,10 +31,10 @@ std::vector<T> Aufgabe3:: AuswahlSort(std::vector<T> input_id){
     }  
   return input_id; 
 }
-template<typename T> 
-std::vector<T> Merge(std::vector<T> input_id, int left, std::vector<T> input_id2, int right) {
+template<class T> 
+std::vector<T> Merge(std::vector<T> input_id, unsigned int left, std::vector<T> input_id2, unsigned int right) {
     std::vector<T> result(left + right);
-    int i = 0, j = 0, k = 0;
+    unsigned int i = 0, j = 0, k = 0;
     while (i < left && j < right) {
         if (input_id[i] < input_id2[j]) {
             result[k] = input_id[i];
@@ -61,7 +61,7 @@ std::vector<T> Merge(std::vector<T> input_id, int left, std::vector<T> input_id2
 template<typename T> 
 std::vector<T>  Aufgabe3::MergeSort(std::vector<T> input_id) {
     if (input_id.size() > 1) {
-        int mid = input_id.size() / 2;
+        unsigned int mid = input_id.size() / 2;
         std::vector<T> left_array(input_id.begin(), input_id.begin() + mid);
         std::vector<T> right_array(input_id.begin() + mid, input_id.end());
         left_array = MergeSort(left_array);
