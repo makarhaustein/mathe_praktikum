@@ -70,7 +70,7 @@ std::vector<T>  Aufgabe3::MergeSort(std::vector<T> input_id) {
     }
     return input_id;
 }
-template < typename T >
+template < class T >
 void  Aufgabe3::Read ( std :: ifstream & ifs , std :: vector <T >& array ){
     T value; 
     while(ifs >> value){
@@ -78,7 +78,7 @@ void  Aufgabe3::Read ( std :: ifstream & ifs , std :: vector <T >& array ){
     }
 
 }
-template < typename T >
+template < class T >
 void Aufgabe3::Print ( std :: ostream & os , const std :: vector <T >& array ){
   for (const T& i: array){
     os << i << " "; 
@@ -89,7 +89,7 @@ void hauptfkt(){
     std::ifstream ifs, jfs, kfs; 
     ifs.open("C:/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (3)/Code/doubles.txt");
     jfs.open("C:/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (3)/Code/strings.txt");
-    kfs.open("C:/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (3)/Code/student.txt");
+    kfs.open("C:/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (3)/Code/studenten.txt");
 
     if (!ifs.is_open()) {
         std::cerr << "Failed to open file double." << std::endl;
@@ -140,11 +140,14 @@ void hauptfkt(){
       student = Aufgabe3:: MergeSort(student); 
     }
     Aufgabe3::Print(std:: cout, doub); 
+    std:: cout << "\n"; 
     mapra::CheckSolution(doub);
     Aufgabe3::Print(std:: cout, str);
+     std:: cout << "\n"; 
     mapra::CheckSolution(str);  
     Aufgabe3::Print(std:: cout,  student); 
-    mapra::CheckSolution(student); 
+     std:: cout << "\n"; 
+    //mapra::CheckSolution(student); 
     ifs.close(); // Don't forget to close the file stream
     jfs.close(); 
     kfs.close(); 
