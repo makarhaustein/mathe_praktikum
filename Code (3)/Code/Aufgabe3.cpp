@@ -1,4 +1,5 @@
 #include "Aufgabe3.h"
+
 template<typename T> 
 std::vector <T> Aufgabe3:: BubbleSort( std::vector<T> input_id){
     for (int i = input_id.size()-1; i > 0; i--){
@@ -84,21 +85,71 @@ void Aufgabe3::Print ( std :: ostream & os , const std :: vector <T >& array ){
   }
   
 }
-int main(){
-    std::ifstream ifs; 
+void hauptfkt(){
+    std::ifstream ifs, jfs, kfs; 
     ifs.open("C:/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (3)/Code/doubles.txt");
+    jfs.open("C:/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (3)/Code/strings.txt");
+    kfs.open("C:/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (3)/Code/student.txt");
+
     if (!ifs.is_open()) {
-        std::cerr << "Failed to open file." << std::endl;
-        return 1;
+        std::cerr << "Failed to open file double." << std::endl;
+        return;
     }
-
-    std::vector<double> data; // Change int to the appropriate type if needed
-    Aufgabe3::Read(ifs, data);
-
+    if (!jfs.is_open()) {
+        std::cerr << "Failed to open file strings." << std::endl;
+        return;
+    }
+    if (!kfs.is_open()) {
+        std::cerr << "Failed to open file student." << std::endl;
+        return;
+    }
+    std::vector<double> doub; // Change int to the appropriate type if needed
+    std::vector<std:: string> str;
+    std::vector<mapra:: Student> student; 
+    Aufgabe3::Read(ifs, doub);
+    Aufgabe3::Read(jfs, str); 
+    Aufgabe3::Read(kfs, student); 
     // Print out the data read from the file
-   std:: ofstream fout ( " results.txt " );
-    Aufgabe3:: Print(fout, data); 
-    fout.close(); 
+    std:: string method; 
+    bool A = false; 
+    bool B = false; 
+    bool M = false; 
+    while( !A && !B  && !M ){
+    std:: cout << "Suchen Sie eine Neue Sortieralgorithmus aus (B, A, M) \n";
+    std:: cin >> method;  
+    if (method.compare("A") == 0){
+      A = true; 
+    }else if (method.compare("B") == 0){
+      B = true; 
+    }else if (method.compare("M") == 0){
+      M = true; 
+    }
+    }
+    if (A){
+      doub = Aufgabe3::AuswahlSort(doub); 
+      str  = Aufgabe3::AuswahlSort(str); 
+      student = Aufgabe3:: AuswahlSort(student); 
+    }else if (B)
+    {
+      doub = Aufgabe3::BubbleSort(doub); 
+      str  = Aufgabe3::BubbleSort(str); 
+      student = Aufgabe3:: BubbleSort(student); 
+    }else{
+      doub = Aufgabe3::MergeSort(doub); 
+      str  = Aufgabe3::MergeSort(str); 
+      student = Aufgabe3:: MergeSort(student); 
+    }
+    Aufgabe3::Print(std:: cout, doub); 
+    mapra::CheckSolution(doub);
+    Aufgabe3::Print(std:: cout, str);
+    mapra::CheckSolution(str);  
+    Aufgabe3::Print(std:: cout,  student); 
+    mapra::CheckSolution(student); 
     ifs.close(); // Don't forget to close the file stream
+    jfs.close(); 
+    kfs.close(); 
+}
+int main(){
+    hauptfkt(); 
     return 0;
 }

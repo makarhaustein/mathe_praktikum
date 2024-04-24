@@ -22,10 +22,11 @@ std::ostream& operator<<(std::ostream&, const Student&);
 
 // Vergleichsoperator "<"
 bool operator<(const Student&, const Student&);
-
+bool operator>(const mapra::Student& a, const mapra::Student& b); 
 // Vergleichsoperatoren "==" bzw. "!="
 bool operator==(const Student&, const Student&);
 bool operator!=(const Student&, const Student&);
+
 
 }  // namespace mapra
 
