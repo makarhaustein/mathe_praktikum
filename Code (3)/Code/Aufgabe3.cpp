@@ -87,9 +87,9 @@ void Aufgabe3::Print ( std :: ostream & os , const std :: vector <T >& array ){
 }
 void hauptfkt(){
     std::ifstream ifs, jfs, kfs; 
-    ifs.open("C:/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (3)/Code/doubles.txt");
-    jfs.open("C:/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (3)/Code/strings.txt");
-    kfs.open("C:/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (3)/Code/studenten.txt");
+    ifs.open("doubles.txt");
+    jfs.open("strings.txt");
+    kfs.open("studenten.txt");
 
     if (!ifs.is_open()) {
         std::cerr << "Failed to open file double." << std::endl;
@@ -147,7 +147,7 @@ void hauptfkt(){
     mapra::CheckSolution(str);  
     Aufgabe3::Print(std:: cout,  student); 
      std:: cout << "\n"; 
-    //mapra::CheckSolution(student); 
+    mapra::CheckSolution(student); 
     ifs.close(); // Don't forget to close the file stream
     jfs.close(); 
     kfs.close(); 
