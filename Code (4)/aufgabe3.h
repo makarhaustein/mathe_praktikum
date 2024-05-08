@@ -19,7 +19,6 @@ namespace intergral{
  double mittlepunktIntegral(double (*g)(double x),int n , double a, double b,std:: vector<double> &evaluated_values, std:: vector<double>& positions); 
  double simsonsIntegral(double (*g)(double x), int n, double a, double b,std:: vector<double> &evaluated_values, std:: vector<double>& positions); 
  double trapezIntegral(double (*g)(double x), int n, double a, double b,std:: vector<double> &evaluated_values, std:: vector<double>& positions, std:: vector<double>& intervals_position); 
- double recursive_integral_aquidistance(double (*g)(double x), double a, double b, double eplison, int counter ,std:: vector<double> &evaluated_values, std:: vector<double>& positions);
  //int find_grad(double (*g)(double x)); 
 }
 
