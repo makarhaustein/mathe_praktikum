@@ -1,4 +1,4 @@
-#include "aufgabe3.h"
+#include "quadratur.h"
 #include <iostream>
 #include <cmath>
 
@@ -150,14 +150,6 @@ double adaptive(double (*g)(double x), double a, double b, double epsilon) {
     std:: cout << "adaptive "<< counter[0] << std::endl; 
     return   result; 
 }
-
-
-double f(double x) {
-    return x; 
-}
-double h(double x) {
-    return x*x; 
-}
 void main_rountine(){
     bool id = false; 
     int method;
@@ -172,12 +164,18 @@ void main_rountine(){
     double a,b,epsilon,result1,result2; 
     getExample(method,a,b,epsilon); 
     result1 = integral_aquidistance(f,a,b,epsilon); 
-    result2 = adaptive(f,a,b,epsilon); 
-    std::cout << "Result of aquidistance " << result1 <<" near the exact value: " <<checkSolution(result1) << std::endl ;
-    std::cout << "Result of aquidistance " << result2 <<" near the exact value: " <<checkSolution(result2) << std::endl ;
+    checkSolution(result1);
 }
+
+double g(double x) {
+    return x; 
+}
+double h(double x) {
+    return x*x; 
+}
+
 int main() {
-    main_rountine(); 
+    main_rountine();
     return 0; 
 }
 
