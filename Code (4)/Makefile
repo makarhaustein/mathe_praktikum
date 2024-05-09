@@ -1,15 +1,15 @@
 CXXFLAGS = -std=c++17 -Wall -Wextra -Wpedantic
 LIBS  = -lGL -lpthread -lX11
 
-all: quadratur
+all: aufgabe3
 
-quadratur.o: quadratur.cpp unit.h
+aufgabe3.o: aufgabe3.cpp unit.h
 	$(CXX) $(CXXFLAGS) -c $<
 
-quadratur: quadratur.o unit.o IGL.o
+aufgabe3: aufgabe3.o unit.o IGL.o
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LIBS)
 
 clean:
-	rm -f quadratur *.o
+	rm -f aufgabe3 *.o
 
 .PHONY: clean

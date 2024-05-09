@@ -14,13 +14,13 @@
 #include <tuple>
 
 namespace intergral{
- std::tuple<double,double> evaluate(double (*g)(double x), double a, double b,std:: vector<double> &evaluated_values, std:: vector<double>& positions);
- double integral_aquidistance(double (*g)(double x), double a, double b, double eplison ); 
- double mittlepunktIntegral(double (*g)(double x),int n , double a, double b,std:: vector<double> &evaluated_values, std:: vector<double>& positions); 
- double simsonsIntegral(double (*g)(double x), int n, double a, double b,std:: vector<double> &evaluated_values, std:: vector<double>& positions); 
- double trapezIntegral(double (*g)(double x), int n, double a, double b,std:: vector<double> &evaluated_values, std:: vector<double>& positions, std:: vector<double>& intervals_position); 
- double recursive_integral_aquidistance(double (*g)(double x), double a, double b, double eplison, int counter ,std:: vector<double> &evaluated_values, std:: vector<double>& positions);
- //int find_grad(double (*g)(double x)); 
+ std::tuple<double,double> evaluate(double (*g)(double x), double a, double b, std::vector<double> &evaluated_values, std::vector<double> &positions, std::vector<int>&counter);
+ double mittlepunktIntegral(double (*g)(double x), int n, double a, double b, std::vector<double> &evaluated_values, std::vector<double> &positions,std::vector<int>&counter ,double h  = -1) ; 
+ double trapezIntegral(double (*g)(double x), int n, double a, double b, std::vector<double> &evaluated_values, std::vector<double> &positions,std::vector<int>&counter ,double h = -1);
+ double simpsonsIntegral(double (*g)(double x), int n, double a, double b, std::vector<double> &evaluated_values, std::vector<double> &positions,std::vector<int>&counter ,double h = -1) ; 
+ double integral_aquidistance(double (*g)(double x), double a, double b, double epsilon); 
+ double adaptive(double (*g)(double x), double a, double b, double epsilon) ; 
+ void main_rountine(void); 
 }
 
 #endif
