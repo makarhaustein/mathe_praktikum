@@ -23,6 +23,8 @@ namespace intergralnew{
  double trapezoidalIntegral(double (*g)(double x), double a, double b,std:: map <double,double> &function_values );
  double recursive(double (*g)(double x), double a, double b, double epsilon,std:: map <double,double> &function_values) ; 
  double simpsonsIntegral(double (*g)(double x), double a, double b,std:: map <double,double> &function_values ) ; 
+ void main_rountine2(void);
+ void main_rountine(void);
 }
 
 #endif

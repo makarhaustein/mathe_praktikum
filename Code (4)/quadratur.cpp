@@ -53,11 +53,7 @@ double intergralnew::aquidistance(double (*g)(double x), double a, double b, dou
     }
     return sum;
 }
-
-
-    
-
-    void main_rountine(){
+    void intergralnew::main_rountine(){
     bool id = false; 
     int method;
     while (!id)
@@ -75,7 +71,7 @@ double intergralnew::aquidistance(double (*g)(double x), double a, double b, dou
 
     
     }
-    void main_rountine2(){
+    void intergralnew::main_rountine2(){
     bool id = false; 
     int method;
     while (!id)
@@ -102,8 +98,8 @@ double intergralnew::aquidistance(double (*g)(double x), double a, double b, dou
     }
 
     int main() {
-        main_rountine();
-        main_rountine2();
+        intergralnew::main_rountine();
+        intergralnew::main_rountine2();
         return 0; 
     }
 
