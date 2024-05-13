@@ -32,6 +32,31 @@
         function_values[b] = g(b);
         return recursive(g, a, b, epsilon, function_values);
     }
+   double intergralnew::determine_smallest_interval(double (*g)(double x), double a, double b, double epsilon, std::map<double, double> &function_values) {
+    if (std::abs(midpointIntegral(g, a, b, function_values) - trapezoidalIntegral(g, a, b, function_values)) <= epsilon) {
+        return b - a;
+    }
+    return std::min(determine_smallest_interval(g, a, (a + b) / 2, epsilon / 2, function_values),determine_smallest_interval(g, (a + b) / 2, b, epsilon / 2, function_values));
+    }
+
+double intergralnew::aquidistance(double (*g)(double x), double a, double b, double epsilon) {
+    std::map<double, double> function_values;
+    function_values[a] = g(a);
+    function_values[b] = g(b);
+    double intervalLength = determine_smallest_interval(g, a, b, epsilon, function_values);
+    int n = static_cast<int>((b - a) / intervalLength);
+    double sum = 0;
+    for (int i = 1; i <= n; i++) {  // Corrected loop limit
+        double subIntervalStart = a + (i - 1) * intervalLength;  // Adjusted start of sub-interval
+        double subIntervalEnd = a + i * intervalLength;
+        sum += simpsonsIntegral(g, subIntervalStart, subIntervalEnd, function_values);
+    }
+    return sum;
+}
+
+
+    
+
     void main_rountine(){
     bool id = false; 
     int method;
@@ -47,6 +72,26 @@
     getExample(method,a,b,epsilon); 
     result1 = intergralnew::adaptive(f,a,b,epsilon); 
     checkSolution(result1);
+
+    
+    }
+    void main_rountine2(){
+    bool id = false; 
+    int method;
+    while (!id)
+    {
+        std::cout << "Suchen Sie eine id aus (id >= 0) \n";
+        std::cin >> method;
+        if (method >= 0){
+         id = true;
+        }
+    }
+    double a,b,epsilon,result1; 
+    getExample(method,a,b,epsilon); 
+    result1 = intergralnew::aquidistance(f,a,b,epsilon); 
+    checkSolution(result1);
+
+    
     }
 
     double g(double x) {
@@ -58,7 +103,8 @@
 
     int main() {
         main_rountine();
+        main_rountine2();
         return 0; 
     }
 
-
+   

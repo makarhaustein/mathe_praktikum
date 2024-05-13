@@ -15,6 +15,8 @@
 #include <map>
 
 namespace intergralnew{
+ double aquidistance(double (*g)(double x), double a, double b, double epsilon) ; 
+ double determine_smallest_interval(double (*g)(double x), double a, double b, double epsilon,std:: map <double,double> &function_values) ; 
  double adaptive(double (*g)(double x), double a, double b, double epsilon) ; 
  double evaluate(double (*g)(double x), double a,std:: map <double,double> &function_values ) ; 
  double midpointIntegral(double (*g)(double x), double a, double b,std:: map <double,double> &function_values ) ; 
