@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/loesung.dir/src/loesung.cpp.o CMakeFiles/loesung.dir/src/Game.cpp.o CMakeFiles/loesung.dir/src/Board.cpp.o CMakeFiles/loesung.dir/src/minmax.cpp.o CMakeFiles/loesung.dir/src/spielablauf.cpp.o ../lib/unit.o ../lib/plotx11.o -o bin/loesung   -L/opt/X11/lib  -Wl,-rpath,/opt/X11/lib -lX11 

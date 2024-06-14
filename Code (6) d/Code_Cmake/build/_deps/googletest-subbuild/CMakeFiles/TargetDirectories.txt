@@ -1,0 +1,3 @@
+/mnt/c/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (6) d/Code_Cmake/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
+/mnt/c/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (6) d/Code_Cmake/build/_deps/googletest-subbuild/CMakeFiles/edit_cache.dir
+/mnt/c/Users/aadia/OneDrive - Students RWTH Aachen University/Documents/uni/4/MAthe Prak/github/mathe_praktikum/Code (6) d/Code_Cmake/build/_deps/googletest-subbuild/CMakeFiles/rebuild_cache.dir
