@@ -1,7 +1,8 @@
     #include "Game.h"
-
-    int main(){
-        Game game;  // Create a new game
+    #include "unit.h"
+    using namespace mapra; 
+    void test_game(){
+         Game game;  // Create a new game
 
         // Test 1: Fill a row with 4 consecutive red stones
         std::cout << "Test 1: Fill a row with 4 consecutive red stones" << std::endl;
@@ -60,6 +61,44 @@
         game.clear_board();  // Clear the board
 
         std::cout << "All tests completed." << std::endl;
+    }
+    void testBoard() {
+    // 1. Test board generation with given specifications
+    int cols = 5;
+    int rows = 4;
+    Board board(cols, rows);
+    
+    if (board.get_coloumn() != cols || board.get_rows() != rows) {
+        std::cout << "Test failed: Board dimensions are incorrect." << std::endl;
+        return;
+    } else {
+        std::cout << "Test passed: Board dimensions are correct." << std::endl;
+    }
+
+    // 2. Test inserting correctly using set_x
+    board.set_x(2, 1); // insert '1' in column 2 (should go to the bottom most available row)
+    
+    if (board.get_x_y(2, rows - 1) != 1) { // the bottom-most row should be filled with '1'
+        std::cout << "Test failed: set_x did not insert correctly." << std::endl;
+        return;
+    } else {
+        std::cout << "Test passed: set_x inserted correctly." << std::endl;
+    }
+
+    // Check if trying to insert in the same column places the value in the next available row
+    board.set_x(2, 2); // insert '2' in column 2 (should go to the row above the previously filled position)
+    
+    if (board.get_x_y(2, rows - 2) != 2) { // the next available row above should be filled with '2'
+        std::cout << "Test failed: set_x did not place in the correct position when column partially filled." << std::endl;
+        return;
+    } else {
+        std::cout << "Test passed: set_x placed correctly when column partially filled." << std::endl;
+    }
+
+    std::cout << "All tests passed." << std::endl;
+}
+    int main(){
+        testBoard(); 
         return 0; 
     }
         

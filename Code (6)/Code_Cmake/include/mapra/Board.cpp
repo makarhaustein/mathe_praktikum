@@ -1,22 +1,22 @@
 #include "Board.h"
 #include <iostream>
 Board::Board(){
-    std::vector<int> a(mapra::kNumRows,0);
-    std::vector<std::vector<int>> b(mapra:: kNumCols,a);
+    std::vector<int> a(mapra::kNumCols,0);
+    std::vector<std::vector<int>> b(mapra:: kNumRows ,a);
     this->board = b;
 }
 
 Board::Board(int coloumn, int row){
-    std::vector<int> a(row,0);
-    std::vector<std::vector<int>> b(coloumn,a);
+    std::vector<int> a(coloumn,0);
+    std::vector<std::vector<int>> b(row,a);
     this->board = b;
 }
 
 Board::Board(const Board &b){
     this->board = b.board;
 }
-bool Board::check_x_y(int x, int y){
-    if(y >= this->board.size() || x >= this->board[0].size() ){
+bool Board::check_x_y(int row, int cols){
+    if(row >= this->board.size() || cols >= this->board[0].size() || row < 0 || cols < 0 ){
         return false; 
     }   
     return true;
@@ -39,6 +39,19 @@ int Board::get_coloumn(){
      return this->board[0].size(); 
 }
 
+void Board::set_x(int cols, int color){
+    if (color > 2 || color < 0 || cols < 0 || cols >= this->board[0].size() ){
+            std:: cout << "invalid  entered, try again"  << std:: endl;
+            return; 
+        }
+    for (int i = this->board.size()-1; i >= 0; i--){
+        if(this->get_x_y(cols,i) == 0){
+            this->set_x_y(cols,i,color); 
+            return; 
+        }
+    }
+}
+
 void Board::set_x_y(int coloumn, int row, int color){
         if (color > 2 || color < 0){
             std:: cout << "invalid color entered, try again"  << std:: endl;
@@ -48,7 +61,11 @@ void Board::set_x_y(int coloumn, int row, int color){
         std:: cout << "invalid corodinate entered 0, try again"  << std:: endl;
         return; 
         }
-        this->board[row][coloumn] = color; 
+        else if (get_x_y(coloumn,row) != 0){
+             std:: cout << "already filled"  << std:: endl;
+        return; 
+        }
+         this->board[row][coloumn] = color; 
 }
 //returns true if red 
 bool Board::color_red_xy(int coloum, int row){
@@ -82,3 +99,10 @@ void Board::print(){
     std :: cout << "Board printed ended" << std::endl; 
 }
 
+void Board::clear(){
+    for(std::vector<int> i : this->board){
+        for(int j : i ){
+            i[j] = 0; 
+        }
+    }
+}

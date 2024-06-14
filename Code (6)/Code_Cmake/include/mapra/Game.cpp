@@ -4,18 +4,12 @@
 
 // Method to clear the board
 void Game::clear_board() {
-    int rows = playing_surface.get_rows();  
-    int cols = playing_surface.get_coloumn();  
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            playing_surface.set_x_y(j, i, 0);
-        }
-    }
+    this->playing_surface.clear(); 
 }
 
 // Method to set a stone on the board
 void Game::set_stone(int coloumn, int row, int color) {
-    playing_surface.set_x_y(coloumn, row, color);
+    playing_surface.set_x(coloumn, color);
 }
 int Game::helper(int rows, int cols){
     for(int i = 0; i < rows; i++){
@@ -128,7 +122,7 @@ int Game::helper3(int rows, int cols) {
 
 // Method to check if a game is won
 
-int Game::game_won() {
+int Game::round_won() {
 
     int rows = playing_surface.get_rows();  // Assuming getRows() is implemented in Board class
     int cols = playing_surface.get_coloumn();  // Assuming getCols() is implemented in Board class
@@ -136,18 +130,46 @@ int Game::game_won() {
     //check rows: 
     int winner = helper(rows,cols); 
     if(winner != 0){
+        clear_board(); 
+        this->games_won.push_back(winner); 
         return winner; 
     }
     winner = helper2(rows,cols); 
     if(winner != 0){
+        clear_board(); 
+         this->games_won.push_back(winner); 
         return winner; 
     }
      winner = helper3(rows,cols); 
     if(winner != 0){
+        clear_board(); 
+         this->games_won.push_back(winner); 
         return winner; 
     }
     return 0; 
     
+}
+int Game::game_won(){
+    if(this->games_won.size() == mapra::kNumGames){
+        int counter1, counter2 = 0 ; 
+        for(int i : this->games_won){
+            switch (i){
+            case 1:
+                counter1 ++; 
+                break;
+            case 2: 
+                counter2 ++; 
+                break;
+            default:
+                break;
+            }
+        }
+        if( counter1 < counter2){
+            return 1; 
+        }
+        return 2; 
+    }
+    return 0; 
 }
 
 void Game::print(){

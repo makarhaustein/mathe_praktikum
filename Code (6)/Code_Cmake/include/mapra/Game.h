@@ -17,6 +17,7 @@
         void clear_board(); 
         void set_stone(int coloumn, int row, int color);
         int game_won(); 
+        int round_won(); 
         void print(); 
 
     private: 
