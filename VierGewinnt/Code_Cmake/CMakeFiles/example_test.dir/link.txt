@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/example_test.dir/tests/example_test.cpp.o CMakeFiles/example_test.dir/tests/run.cpp.o -o tests/example_test  lib/libgtest.a lib/libgmock.a lib/libgtest.a 

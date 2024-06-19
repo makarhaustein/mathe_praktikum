@@ -1,0 +1,3 @@
+/home/makar/Coding/Learning/MathePraktikum/VierGewinnt/Code_Cmake/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
+/home/makar/Coding/Learning/MathePraktikum/VierGewinnt/Code_Cmake/_deps/googletest-subbuild/CMakeFiles/edit_cache.dir
+/home/makar/Coding/Learning/MathePraktikum/VierGewinnt/Code_Cmake/_deps/googletest-subbuild/CMakeFiles/rebuild_cache.dir
