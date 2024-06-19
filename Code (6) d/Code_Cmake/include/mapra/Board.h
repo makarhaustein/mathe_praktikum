@@ -22,6 +22,8 @@ public:
     void clear(); 
     void set_x_y(int coloumn, int row, int color);
 
+    void set_x_y_o(int coloumn, int row);
+
 private:
     std::vector<std::vector<int>> board;
    

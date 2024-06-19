@@ -1,5 +1,6 @@
 #include "../include/mapra/Board.h"
 
+
 Board::Board(){
     std::vector<int> a(mapra::kNumCols,0);
     std::vector<std::vector<int>> b(mapra:: kNumRows ,a);
@@ -66,6 +67,17 @@ void Board::set_x_y(int coloumn, int row, int color){
         return; 
         }
          this->board[row][coloumn] = color; 
+}
+void Board::set_x_y_o(int coloumn, int row){
+        if(!check_x_y(row,coloumn)){
+        std:: cout << "invalid corodinate entered 0, try again"  << std:: endl;
+        return; 
+        }
+        else if (get_x_y(coloumn,row) == 0){
+             std:: cout << "already filled " << coloumn << "  " << row  << " tried: " << 0 << " have: " << get_x_y(coloumn,row)  << std:: endl;
+        return; 
+        }
+         this->board[row][coloumn] = 0; 
 }
 //returns true if red 
 bool Board::color_red_xy(int coloum, int row){

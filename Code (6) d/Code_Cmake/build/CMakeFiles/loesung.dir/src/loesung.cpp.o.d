@@ -188,4 +188,6 @@ CMakeFiles/loesung.dir/src/loesung.cpp.o: \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
  /mnt/c/Users/aadia/OneDrive\ -\ Students\ RWTH\ Aachen\ University/Documents/uni/4/MAthe\ Prak/github/mathe_praktikum/Code\ (6)\ d/Code_Cmake/src/../include/mapra/unit.h \
+ /mnt/c/Users/aadia/OneDrive\ -\ Students\ RWTH\ Aachen\ University/Documents/uni/4/MAthe\ Prak/github/mathe_praktikum/Code\ (6)\ d/Code_Cmake/src/../include/mapra/spielablauf.h \
+ /mnt/c/Users/aadia/OneDrive\ -\ Students\ RWTH\ Aachen\ University/Documents/uni/4/MAthe\ Prak/github/mathe_praktikum/Code\ (6)\ d/Code_Cmake/src/../include/mapra/Minmax.h \
  /usr/include/assert.h

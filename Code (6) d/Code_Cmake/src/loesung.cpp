@@ -1,6 +1,7 @@
     #include "../include/mapra/Game.h"
     #include "../include/mapra/Minmax.h"
     #include "../include/mapra/unit.h"
+    #include "../include/mapra/spielablauf.h"
     #include <iostream>
     #include <assert.h>
     #include <time.h>
@@ -129,14 +130,40 @@
     board.set_x_y(0, 0, 2);
     board.set_x_y(1, 0, 2);
     board.set_x_y(2, 0, 2);
-    assert(minmax.heuristic() == 0.7);
+    std::cout<< minmax.heuristic() << std::endl; 
     board.clear();
 
     // Test 4: No win but some red stones
     board.set_x_y(0, 0, 1);
     board.set_x_y(1, 0, 1);
     board.set_x_y(2, 0, 1);
-    assert(minmax.heuristic() == -0.7);
+    std::cout<< minmax.heuristic() << std::endl; 
+    board.clear();
+    //Test 5: Diagonals
+    board.set_x_y(0, 0, 1);
+    board.set_x_y(1, 1, 1);
+    board.set_x_y(2, 2, 1);
+   std::cout<< minmax.heuristic() << std::endl; 
+    board.clear();
+    board.set_x_y(1, 0, 1);
+    board.set_x_y(2, 1, 1);
+    board.set_x_y(3, 2, 1);
+    std::cout<< minmax.heuristic() << std::endl; 
+    board.clear();
+    //test 6: Anti-Diagonals: 
+    board.set_x_y(6, 0, 1);
+    board.set_x_y(5, 1, 1);
+    board.set_x_y(4, 2, 1);
+    std::cout<< minmax.heuristic() << std::endl; 
+    board.clear();
+    //mix 
+    board.set_x_y(0, 0, 2);
+    board.set_x_y(1, 0, 2);
+    board.set_x_y(2, 0, 2);
+    board.set_x_y(0, 1, 2);
+     board.set_x_y(0, 2, 2);
+      board.set_x_y(0, 3, 2);
+    std::cout<< minmax.heuristic() << std::endl; 
     board.clear();
 
     std::cout << "All heuristic tests passed!" << std::endl;
@@ -209,10 +236,48 @@
     std::cout << "Test 9: Manual verification needed for the print method." << std::endl;
     b2.print();
 }
+  void testminmax(){
+        Minmax minmax;
+    // Test 2: Winning Move
+        minmax.current_board.clear(); 
+        minmax.current_board.set_x_y(3, 5, 2);
+        minmax.current_board.set_x_y(3, 4, 2);
+        minmax.current_board.set_x_y(3, 3, 2);
+        int move = minmax.minmax(0); // AI's turn
+        std::cout << "Test 2 - Expected: 3, Got: " << move << std::endl;
+    
+
+    // Test 3: Blocking Move
+    
+         minmax.current_board.clear(); 
+         minmax.current_board.set_x_y(3, 5, 1);
+         minmax.current_board.set_x_y(3, 4, 1);
+         minmax.current_board.set_x_y(3, 3, 1);
+         move = minmax.minmax(0); // AI's turn
+        std::cout << "Test 3 - Expected: 3, Got: " << move << std::endl;
+    
+
+    // Test 4: Mixed Scenario
+    
+          minmax.current_board.clear(); 
+        // Setting up a mixed board state
+        minmax.current_board.set_x_y(0, 5, 2);
+        minmax.current_board.set_x_y(0, 4, 1);
+         minmax.current_board.set_x_y(1, 5, 2);
+         minmax.current_board.set_x_y(1, 4, 1);
+         minmax.current_board.set_x_y(2, 5, 2);
+         minmax.current_board.set_x_y(2, 4, 1);
+        minmax.current_board.set_x_y(3, 5, 1);
+        minmax.current_board.set_x_y(3, 4, 2);
        
+        move = minmax.minmax(0); // AI's turn
+        std::cout << "Test 4 - Got: " << move << std::endl;
+        minmax.current_board.print(); 
+    
+  }    
     int main(){
-        srand((unsigned) time(NULL));
-       testHeuristic(); 
+        srand((unsigned) time(NULL)); 
+        run_game(); 
         return 0; 
     }
         

@@ -12,14 +12,12 @@ public:
      //minmax choose 
      //get int -> update board -> do minmax -> give int 
      //heuristic
-     Board current_board; 
-     int minmax(int turn); 
-     int next_turn(int opposite_turn); 
-     double heuristic(); 
-     int start_turn(); 
-     int minimaxAlphaBeta(int turn, int depth, int alpha, int beta);
-
+     Board current_board;
+     std::pair<int, double> minmaxAlphaBeta(int turn, int depth);
+     int minmax(int turn);
+     int next_turn(int opposite_turn, int first); 
+     double heuristic();
 private:
-    
+
 };
 #endif  // BOARD_H_
